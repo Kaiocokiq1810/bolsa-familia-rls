@@ -1,0 +1,69 @@
+table dim_regioes
+	lineageTag: 0f1e75ef-6325-49b3-a9f8-2c5a1263c121
+
+	column Regiao
+		dataType: string
+		lineageTag: cd923bdd-78f1-47ce-9272-1c5f53bedd2f
+		summarizeBy: none
+		sourceColumn: Regiao
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: 6322514c-7d9c-4e9b-a17e-2fca9cab1274
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_regioes = m
+		mode: import
+		source =
+				let
+				Fonte = Table.FromRows(
+				{
+				{"Norte", "AC"},
+				{"Norte", "AM"},
+				{"Norte", "AP"},
+				{"Norte", "PA"},
+				{"Norte", "RO"},
+				{"Norte", "RR"},
+				{"Norte", "TO"},
+				{"Nordeste", "AL"},
+				{"Nordeste", "BA"},
+				{"Nordeste", "CE"},
+				{"Nordeste", "MA"},
+				{"Nordeste", "PB"},
+				{"Nordeste", "PE"},
+				{"Nordeste", "PI"},
+				{"Nordeste", "RN"},
+				{"Nordeste", "SE"},
+				{"Centro-Oeste", "DF"},
+				{"Centro-Oeste", "GO"},
+				{"Centro-Oeste", "MS"},
+				{"Centro-Oeste", "MT"},
+				{"Sudeste", "ES"},
+				{"Sudeste", "MG"},
+				{"Sudeste", "RJ"},
+				{"Sudeste", "SP"},
+				{"Sul", "PR"},
+				{"Sul", "RS"},
+				{"Sul", "SC"}
+				},
+				{"Regiao", "UF"}
+				),
+				TipoAlterado = Table.TransformColumnTypes(
+				Fonte,
+				{
+				{"Regiao", type text},
+				{"UF", type text}
+				}
+				)
+				in
+				TipoAlterado
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

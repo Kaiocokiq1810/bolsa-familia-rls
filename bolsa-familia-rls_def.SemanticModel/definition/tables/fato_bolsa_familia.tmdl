@@ -1,0 +1,135 @@
+table fato_bolsa_familia
+	lineageTag: fb7c7d0c-f29c-4132-8e2e-0dac05cb1fb5
+
+	measure 'Total Repasses' =
+			
+			SUM(fato_bolsa_familia[VALOR PARCELA])
+		formatString: 0
+		lineageTag: 63facdb2-7c0f-4ab9-bb31-522bd11605d8
+
+	measure 'Total Beneficiarios' =
+			
+			DISTINCTCOUNT(fato_bolsa_familia[NIS FAVORECIDO])
+		formatString: 0
+		lineageTag: b6f4386c-8de4-4f2f-8cd7-8b7d515574eb
+
+	measure 'Ticket Medio' =
+			
+			AVERAGE(fato_bolsa_familia[VALOR PARCELA])
+		lineageTag: 6eff684f-216d-4033-a851-008b07f9acd9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Municipios Atendidos' =
+			
+			DISTINCTCOUNT(fato_bolsa_familia[NOME MUNICÍPIO])
+		formatString: 0
+		lineageTag: 0ec39d97-0c85-45b1-aee7-7f853d7c7564
+
+	column 'MÊS COMPETÊNCIA'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a50c1aa-3294-43e1-b104-536a39f0283b
+		summarizeBy: sum
+		sourceColumn: MÊS COMPETÊNCIA
+
+		annotation SummarizationSetBy = Automatic
+
+	column UF
+		dataType: string
+		lineageTag: caff3cb1-ee48-4e05-9272-8453076c35de
+		summarizeBy: none
+		sourceColumn: UF
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CÓDIGO MUNICÍPIO SIAFI'
+		dataType: int64
+		formatString: 0
+		lineageTag: f7c0f088-1e0a-48b2-8bd2-17707bc9641c
+		summarizeBy: sum
+		sourceColumn: CÓDIGO MUNICÍPIO SIAFI
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NOME MUNICÍPIO'
+		dataType: string
+		lineageTag: 1b2a251a-b113-4e30-9397-1adddcdc5492
+		summarizeBy: none
+		sourceColumn: NOME MUNICÍPIO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CPF FAVORECIDO'
+		dataType: string
+		lineageTag: d725131e-e637-4150-a048-3cb118f0a71a
+		summarizeBy: none
+		sourceColumn: CPF FAVORECIDO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NIS FAVORECIDO'
+		dataType: int64
+		formatString: 0
+		lineageTag: 40c2337f-7cec-4f29-a825-f24e1a1b8976
+		summarizeBy: sum
+		sourceColumn: NIS FAVORECIDO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NOME FAVORECIDO'
+		dataType: string
+		lineageTag: a9074d20-6dcc-4868-9a64-78c7a442ea8a
+		summarizeBy: none
+		sourceColumn: NOME FAVORECIDO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VALOR PARCELA'
+		dataType: int64
+		formatString: 0
+		lineageTag: 244cc85f-c596-4b66-9f92-76615ab7da61
+		summarizeBy: sum
+		sourceColumn: VALOR PARCELA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 4efb6bcf-4b9d-484c-9538-99da428907e8
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes
+		dataType: int64
+		formatString: 0
+		lineageTag: 426b8c1f-e5f6-4636-8e7b-2c242bea17bf
+		summarizeBy: sum
+		sourceColumn: Mes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fato_bolsa_familia = m
+		mode: import
+		source =
+				let
+				    Fonte = Csv.Document(File.Contents("C:\Users\Usuario\Downloads\amostra_bolsa.csv"),[Delimiter=",", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Cabeçalhos Promovidos",{{"MÊS COMPETÊNCIA", Int64.Type}, {"UF", type text}, {"CÓDIGO MUNICÍPIO SIAFI", Int64.Type}, {"NOME MUNICÍPIO", type text}, {"CPF FAVORECIDO", type text}, {"NIS FAVORECIDO", Int64.Type}, {"NOME FAVORECIDO", type text}, {"VALOR PARCELA", Int64.Type}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "Ano", each Text.Start(Text.From([MÊS COMPETÊNCIA]),4)),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Personalização Adicionada", "Mes", each Text.End(Text.From([MÊS COMPETÊNCIA]),2)),
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada1",{{"Ano", Int64.Type}, {"Mes", Int64.Type}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado1",{"Ano", "Mes"}),
+				    #"Personalização Adicionada2" = Table.AddColumn(#"Colunas Removidas", "Ano", each Number.IntegerDivide([MÊS COMPETÊNCIA],100)),
+				    #"Personalização Adicionada3" = Table.AddColumn(#"Personalização Adicionada2", "Mes", each Number.Mod([MÊS COMPETÊNCIA],100)),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Personalização Adicionada3",{{"Ano", Int64.Type}, {"Mes", Int64.Type}})
+				in
+				    #"Tipo Alterado2"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

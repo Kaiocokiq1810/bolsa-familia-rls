@@ -1,0 +1,168 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "4883b932e0c9c291a01d",
+  "position": {
+    "x": 10.078740157480315,
+    "y": 115.90551181102362,
+    "z": 0,
+    "height": 280.52493438320209,
+    "width": 569.44881889763781,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_regioes"
+                    }
+                  },
+                  "Property": "UF"
+                }
+              },
+              "queryRef": "dim_regioes.UF",
+              "nativeQueryRef": "UF"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_bolsa_familia"
+                    }
+                  },
+                  "Property": "Municipios Atendidos"
+                }
+              },
+              "queryRef": "fato_bolsa_familia.Municipios Atendidos",
+              "nativeQueryRef": "Municipios Atendidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_bolsa_familia"
+                    }
+                  },
+                  "Property": "Total Beneficiarios"
+                }
+              },
+              "queryRef": "fato_bolsa_familia.Total Beneficiarios",
+              "nativeQueryRef": "Total Beneficiarios"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_bolsa_familia"
+                    }
+                  },
+                  "Property": "Total Repasses"
+                }
+              },
+              "queryRef": "fato_bolsa_familia.Total Repasses",
+              "nativeQueryRef": "Total Repasses"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_bolsa_familia"
+                    }
+                  },
+                  "Property": "Ticket Medio"
+                }
+              },
+              "queryRef": "fato_bolsa_familia.Ticket Medio",
+              "nativeQueryRef": "Ticket Medio"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5c403759690c070a19b9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_regioes"
+              }
+            },
+            "Property": "UF"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "725d6996bb96b0478cb6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_bolsa_familia"
+              }
+            },
+            "Property": "Municipios Atendidos"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7b92a91e774085c8e6ea",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_bolsa_familia"
+              }
+            },
+            "Property": "Total Beneficiarios"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b47a1112e100082c78a9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_bolsa_familia"
+              }
+            },
+            "Property": "Total Repasses"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "350cb649745157ddb789",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_bolsa_familia"
+              }
+            },
+            "Property": "Ticket Medio"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

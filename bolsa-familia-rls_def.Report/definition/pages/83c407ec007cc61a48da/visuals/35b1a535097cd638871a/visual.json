@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "35b1a535097cd638871a",
+  "position": {
+    "x": 25.196850393700785,
+    "y": 40.314960629921259,
+    "z": 0,
+    "height": 280.52493438320209,
+    "width": 280.52493438320209,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_bolsa_familia"
+                    }
+                  },
+                  "Property": "Total Repasses"
+                }
+              },
+              "queryRef": "fato_bolsa_familia.Total Repasses",
+              "nativeQueryRef": "Total Repasses"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fato_bolsa_familia"
+                  }
+                },
+                "Property": "Total Repasses"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "51de4c407a1806c2c810",
+  "position": {
+    "x": 579.5275590551181,
+    "y": 78.9501312335958,
+    "z": 1001,
+    "height": 280.52493438320209,
+    "width": 567.769028871391,
+    "tabOrder": 1001
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_regioes"
+                    }
+                  },
+                  "Property": "Regiao"
+                }
+              },
+              "queryRef": "dim_regioes.Regiao",
+              "nativeQueryRef": "Regiao",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7d31ed71cc27951ac79c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_regioes"
+              }
+            },
+            "Property": "Regiao"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

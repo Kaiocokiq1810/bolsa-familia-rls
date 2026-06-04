@@ -1,0 +1,8 @@
+relationship AutoDetected_3cdb371e-9adf-4645-afea-e156bbd5a18e
+	fromColumn: fato_bolsa_familia.UF
+	toColumn: dim_regioes.UF
+
+relationship b09deadc-9204-d4de-5fcf-6236cb8895ed
+	fromColumn: dim_regioes.Regiao
+	toColumn: dim_usuarios_rls.email_usuario
+

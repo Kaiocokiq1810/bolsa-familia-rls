@@ -1,0 +1,7 @@
+role Gestor_Sul
+	modelPermission: read
+
+	tablePermission dim_regioes = [Regiao] == "Sul"
+
+	annotation PBI_Id = f7a9cefab16146fa9fac505eab40f9e5
+

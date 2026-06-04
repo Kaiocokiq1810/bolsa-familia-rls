@@ -1,0 +1,61 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 56,
+            "y": 13
+          },
+          "nodeIndex": "dim_regioes",
+          "nodeLineageTag": "0f1e75ef-6325-49b3-a9f8-2c5a1263c121",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 232
+          },
+          "nodeIndex": "dim_usuarios_rls",
+          "nodeLineageTag": "62498562-f804-4678-909d-d01e7e0a7d34",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 398,
+            "y": 8
+          },
+          "nodeIndex": "fato_bolsa_familia",
+          "nodeLineageTag": "fb7c7d0c-f29c-4132-8e2e-0dac05cb1fb5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

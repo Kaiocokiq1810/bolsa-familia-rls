@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "a44b90e440e084aeb3c4",
+  "position": {
+    "x": 0,
+    "y": 411.54855643044618,
+    "z": 1000,
+    "height": 282.20472440944883,
+    "width": 569.44881889763781,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_bolsa_familia"
+                    }
+                  },
+                  "Property": "NOME MUNICÍPIO"
+                }
+              },
+              "queryRef": "fato_bolsa_familia.NOME MUNICÍPIO",
+              "nativeQueryRef": "NOME MUNICÍPIO",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fato_bolsa_familia"
+                    }
+                  },
+                  "Property": "Total Repasses"
+                }
+              },
+              "queryRef": "fato_bolsa_familia.Total Repasses",
+              "nativeQueryRef": "Total Repasses"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fato_bolsa_familia"
+                  }
+                },
+                "Property": "Total Repasses"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c82e8ca6ca65052509a0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_bolsa_familia"
+              }
+            },
+            "Property": "NOME MUNICÍPIO"
+          }
+        },
+        "type": "TopN"
+      },
+      {
+        "name": "ae0e1cc51c83c0ba7c01",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fato_bolsa_familia"
+              }
+            },
+            "Property": "Total Repasses"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
